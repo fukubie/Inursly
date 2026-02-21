@@ -70,7 +70,7 @@ Runs at **http://localhost:4000** and proxies API requests to the backend.
 
 ---
 
-## Deploy (free demo for recruiters)
+## Deploy 
 
 - **Backend**: Deploy as a **Web Service** on [Render](https://render.com). Connect your GitHub repo. Root: `doctor-appointment`. Build: `cd backend && npm install`. Start: `cd backend && npm start`. Do **not** set any `DB_*` env vars so it runs in demo mode. Add `FRONTEND_URL` after deploying the frontend.
 - **Frontend**: Deploy as a **Static Site** on Render (or Vercel). Root: `doctor-appointment/frontend`. Build: `npm install && npm run build`. Publish: `build`. Set `REACT_APP_API_URL` to your backend URL.
