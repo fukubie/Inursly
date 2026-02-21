@@ -1,68 +1,104 @@
-# Inursly – Doctor Appointment Platform
+# Inursly
 
-US-based healthcare appointment platform: book with doctors, doctor & clinic registration, and AI assistant. Built for deployment on **Render** and **GitHub** with API keys kept in environment variables (never in code).
-
----
-
-## Security – API keys & secrets
-
-- **Never commit** `.env` or real credentials to Git. Use `.env.example` as a template.
-- **Backend**: All secrets live in environment variables:
-  - `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` – MySQL
-  - `GEMINI_API_KEY` – Gemini chatbot (get from [Google AI Studio](https://makersuite.google.com/app/apikey))
-  - `FRONTEND_URL` – allowed CORS origin (e.g. your frontend URL on Render/Vercel)
-- **Frontend**: Set `REACT_APP_API_URL` to your backend URL in production (e.g. `https://inursly-api.onrender.com`). No API keys in frontend code.
+A full-stack **doctor appointment booking platform** for the US: patients can find doctors, book appointments, and chat with an AI assistant. Doctors and clinics can register. Built with **React**, **Node.js**, **Express**, and **MySQL** (optional; runs in demo mode without a database).
 
 ---
 
-## Deploy with MySQL
+## What it does
 
-- **Azure** (with $100 credit): **[DEPLOY_AZURE.md](./DEPLOY_AZURE.md)** – Azure MySQL + App Service (backend) + Static Web App (frontend), using MySQL Workbench to create tables.
-- **Render + GitHub**: **[DEPLOY_RENDER_GITHUB.md](./DEPLOY_RENDER_GITHUB.md)** – Cloud MySQL (PlanetScale/Railway) + Render Web Service + Static Site.
+- **Patients**: Sign up, log in, search doctors by name or specialty, view doctor profiles (fees, clinics, reviews), book in-person or video appointments, view and cancel their appointments. Each doctor profile has a **QR code** that links to their booking page.
+- **Doctors**: Register via “For Doctors” with name, email, password, bio, experience, and fees.
+- **Clinics**: Register via “For Clinics” with name, address, phone, and email.
+- **AI chatbot**: Answers questions about the platform (powered by Gemini; optional, needs an API key).
 
-### 1. Backend (Render Web Service)
+---
 
-1. Push the repo to GitHub.
-2. In [Render](https://render.com): **New → Web Service**, connect the repo.
-3. **Root Directory**: `doctor-appointment` (or leave blank if repo root is the app).
-4. **Build**: `cd backend && npm install`
-5. **Start**: `cd backend && npm start`
-6. **Environment** (Render Dashboard → Environment):
-   - `NODE_ENV` = `production`
-   - `PORT` = (Render sets this automatically; leave or leave blank)
-   - `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` – use a MySQL add-on (e.g. [PlanetScale](https://planetscale.com), [Railway](https://railway.app)) or external MySQL.
-   - `GEMINI_API_KEY` = your Gemini API key
-   - `FRONTEND_URL` = your frontend URL (e.g. `https://your-frontend.onrender.com` or Vercel URL)
+## Tech stack
 
-### 2. Frontend (Render Static Site or Vercel/Netlify)
+| Part      | Stack |
+|-----------|--------|
+| Frontend  | React, React Router, Axios, Framer Motion, QR code (qrcode.react) |
+| Backend   | Node.js, Express, bcrypt (passwords), CORS |
+| Database  | MySQL (optional). If not configured, backend uses **demo mode**: JSON data + in-memory storage (data resets on restart). |
+| Chatbot   | LangChain + Google Gemini (optional) |
 
-1. **Build command**: `npm run build`
-2. **Publish directory**: `build`
-3. **Environment**: `REACT_APP_API_URL` = your backend URL (e.g. `https://inursly-api.onrender.com`)
+---
 
-If the frontend is in `doctor-appointment/frontend`, set **Root Directory** to `frontend` and add `REACT_APP_API_URL` there.
+## Project structure
 
-### 3. Database schema (MySQL)
-
-Ensure your MySQL database has:
-
-- **patients**: `id`, `name`, `email`, `password` (store bcrypt hash), `dob`
-- **doctors**: `id`, `name`, `email`, `password` (bcrypt for doctor signups), `bio`, `image_url`, `exp`, `total_patients`, `online_fee`, `visit_fee`
-- **appointments**: `id`, `patient_id`, `doctor_id`, `appointment_date`, `time_slot`, `reason`
-- **clinics** (for clinic registration): `id`, `name`, `address`, `phone`, `email`, `created_at` (optional)
-
-Run migrations or SQL scripts to create these tables if they don’t exist.
+```
+doctor-appointment/
+├── backend/           # Express API
+│   ├── server.js      # Routes, auth, demo/MySQL switch
+│   ├── json-fallback.js   # Demo mode (no DB)
+│   ├── chatbot-service.js # RAG + vector store for chatbot
+│   ├── data/          # appointment_data.json (doctors, clinics, etc.)
+│   └── .env.example   # Template for env vars
+├── frontend/          # React app
+│   ├── src/
+│   │   ├── App.js     # Routes
+│   │   ├── components/  # Header, Home, Login, Signup, DoctorDetails, BookAppointment, etc.
+│   │   └── index.js
+│   └── public/
+└── README.md
+```
 
 ---
 
 ## Run locally
 
-1. **Backend**: `cd backend`, copy `.env.example` to `.env`, fill in DB and `GEMINI_API_KEY`. Run `npm install` and `npm run dev`.
-2. **Frontend**: `cd frontend`, add `REACT_APP_API_URL=http://localhost:3000` in `.env` (optional; proxy works for dev). Run `npm install` and `npm start`.
+**Backend**
+
+```bash
+cd backend
+cp .env.example .env   # optional: add DB_* and GEMINI_API_KEY for MySQL and chatbot
+npm install
+npm start
+```
+
+Runs at **http://localhost:3000**. Without `DB_*` in `.env`, it uses **demo mode** (no MySQL).
+
+**Frontend** (separate terminal)
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Runs at **http://localhost:4000** and proxies API requests to the backend.
 
 ---
 
-## Brand
+## Deploy (free demo for recruiters)
 
-- **Name**: Inursly  
-- **Description**: US-based healthcare appointment platform (doctors, clinics, patients, bookings, AI assistant).
+- **Backend**: Deploy as a **Web Service** on [Render](https://render.com). Connect your GitHub repo. Root: `doctor-appointment`. Build: `cd backend && npm install`. Start: `cd backend && npm start`. Do **not** set any `DB_*` env vars so it runs in demo mode. Add `FRONTEND_URL` after deploying the frontend.
+- **Frontend**: Deploy as a **Static Site** on Render (or Vercel). Root: `doctor-appointment/frontend`. Build: `npm install && npm run build`. Publish: `build`. Set `REACT_APP_API_URL` to your backend URL.
+- **Database**: Not required for the free demo. For a real database, use a cloud MySQL (e.g. PlanetScale, Railway) and set `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` on the backend. See **MYSQL_SETUP.md** for the schema.
+
+---
+
+## Environment variables
+
+**Backend** (in `.env` or Render Environment)
+
+| Variable        | Purpose |
+|----------------|--------|
+| `PORT`         | Server port (default 3000). |
+| `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `DB_PORT` | MySQL (optional). Omit for demo mode. |
+| `GEMINI_API_KEY` | Optional; for chatbot. |
+| `FRONTEND_URL` | Allowed CORS origin (e.g. your frontend URL). |
+
+**Frontend** (for production build)
+
+| Variable             | Purpose |
+|----------------------|--------|
+| `REACT_APP_API_URL`  | Backend URL (e.g. `https://your-api.onrender.com`). |
+
+Never commit `.env` or secrets to Git.
+
+---
+
+## License
+
+ISC.
