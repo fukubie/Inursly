@@ -1,0 +1,99 @@
+.doctor-signup-page,
+.clinic-signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px;
+  min-height: 100%;
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--surface-elevated);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  padding: 32px;
+}
+
+.signup-card h1 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: var(--text);
+}
+
+.signup-card .subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.signup-form input,
+.signup-form textarea {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.signup-form .btn-submit {
+  margin-top: 8px;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity 0.2s;
+}
+
+.signup-form .btn-submit:hover {
+  opacity: 0.95;
+}
+
+.signup-card .message {
+  margin-top: 16px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.signup-card .message.success {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.signup-card .message.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.signup-card .login-link {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.signup-card .login-link a {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (max-width: 480px) {
+  .signup-card { padding: 24px 20px; }
+}

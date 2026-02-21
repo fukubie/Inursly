@@ -1,0 +1,152 @@
+/* ====================Add CSS  here==================*/
+
+.appointment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .appointment-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  /* Doctor Info Card */
+  .doctor-info {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+  }
+  
+  .doctor-profile {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  /* Image */
+  .doctor-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  /* Text container */
+  .doctor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  /* Appointment Form */
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .appointment-form input,
+  .appointment-form select,
+  .appointment-form button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .appointment-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .appointment-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Calendar */
+  .calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-day {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #f5f5f5;
+    transition: 0.2s;
+  }
+  
+  .calendar-day:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .calendar-day.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
+  .calendar-day.selected {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .calendar-header {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .calendar-weekday {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+  }
+  
+  .appointment-form textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: none;
+    min-height: 80px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .appointment-container {
+      padding: 10px;
+    }
+  
+    .doctor-profile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .calendar-container {
+      gap: 5px;
+    }
+  
+    .calendar-day {
+      padding: 8px;
+      font-size: 12px;
+    }
+  }
+  

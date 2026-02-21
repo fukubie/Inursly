@@ -1,0 +1,19 @@
+# Render Blueprint – optional. You can also configure via Dashboard.
+# Backend (Node) – set env vars in Dashboard: DB_*, GEMINI_API_KEY, FRONTEND_URL
+services:
+  - type: web
+    name: inursly-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "cd backend && npm install"
+    startCommand: "cd backend && npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        generateValue: true
+      # Add in Dashboard: DB_HOST, DB_USER, DB_PASSWORD, DB_NAME, GEMINI_API_KEY, FRONTEND_URL
+
+# Frontend: deploy as separate static site (Vercel/Netlify) or second Render static site.
+# Set REACT_APP_API_URL to your backend URL (e.g. https://inursly-api.onrender.com).

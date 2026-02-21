@@ -1,0 +1,389 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9e4;
+    color: #000;
+  }
+  
+  /* Layout */
+  .doctor-details-layout {
+    max-width: 1200px;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 0 16px;
+    align-items: flex-start;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  .main-column {
+    flex: 1 0 calc(65% - 12px);
+    min-width: 500px;
+    box-sizing: border-box;
+  }
+  
+  .sidebar {
+    flex: 1 0 calc(35% - 12px);
+    min-width: 300px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: stretch;
+  }
+  
+  
+  /* Doctor Profile */
+  .doctor-profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+  }
+  
+  .doctor-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid #ccc;
+  }
+  
+  .doctor-details-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-width: 0;
+  }
+  
+  .doctor-details-info h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .title {
+    color: #009688;
+    margin: 8px 0 4px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .bio {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .summary-info {
+    display: flex;
+    gap: 30px;
+    font-size: 14px;
+    color: #333;
+    flex-wrap: wrap;
+  }
+  
+  .summary-info span {
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+  
+  .summary-info strong {
+    color: #222;
+    font-weight: 600;
+  }
+  
+  /* Reviews Section */
+  .reviews-section {
+    margin-top: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .review-summary {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .review-circle {
+    background: #222;
+    color: #fff;
+    border-radius: 50%;
+    padding: 20px;
+    font-size: 20px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  .review-highlight {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .ratings-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+  }
+  
+  .ratings-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .ratings-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .patient-comment {
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fcfcfc;
+    margin-top: 20px;
+  }
+  
+  .patient-comment p {
+    margin: 0;
+  }
+  
+  .comment-meta {
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+  }
+  
+  .read-more-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #0066cc;
+    border-radius: 6px;
+    background-color: #0066cc;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
+  }
+  
+  .read-more-btn:hover,
+  .read-more-btn:focus {
+    background-color: #004a99;
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+  }
+  
+  .qr-card { align-items: center; text-align: center; }
+  .qr-hint { font-size: 13px; color: #666; margin: 0 0 12px; }
+  .qr-wrap { padding: 8px; background: #fff; border-radius: 8px; display: inline-block; }
+
+  /* Consult Card */
+  .consult-card {
+    background: #fff;
+    padding: 20px 20px 16px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .consult-heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #1a4ebd;
+    width: 100%;
+  }
+  
+  
+  .consult-group {
+    width: 100%;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .consult-group:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  
+  .consult-card p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #444;
+    width: 100%;
+    line-height: 1.5;
+    word-break: break-word;
+    text-align: left;
+  }
+  
+  .consult-card p strong {
+    color: #222;
+    font-weight: 600;
+  }
+  .available {
+    color: #1a7d1a;
+    font-weight: 600;
+    margin: 4px 0;
+  }
+  
+  /* Buttons */
+  .btn-blue,
+  .btn-orange {
+    margin-top: 10px;
+    padding: 12px 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 15px;
+    display: block;
+  }
+  
+  .btn-blue {
+    background-color: #0066cc;
+    color: white;
+  }
+  
+  .btn-blue:hover {
+    background-color: #000066;
+    box-shadow: 0 4px 12px rgba(0, 0, 128, 0.2);
+  }
+  
+  .btn-orange {
+    background-color: #f90;
+    color: white;
+  }
+  
+  .btn-orange:hover {
+    background-color: #e08a00;
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.2);
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .main-column,
+    .sidebar {
+      flex: 1 1 100%;
+      min-width: auto;
+    }
+  
+    .doctor-details-layout {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .doctor-profile {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      gap: 15px;
+    }
+  
+    .doctor-details-info {
+      text-align: center;
+      align-items: center;
+    }
+  
+    .summary-info {
+      justify-content: center;
+      gap: 20px;
+    }
+  
+    .review-summary {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+  
+    .review-highlight {
+      text-align: center;
+    }
+  
+    .ratings-list li {
+      justify-content: center;
+      gap: 10px;
+    }
+  
+    .sidebar {
+      gap: 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .doctor-details-layout {
+      padding: 0 10px;
+      margin: 20px auto;
+      gap: 15px;
+    }
+  
+    .doctor-profile {
+      padding: 15px;
+      gap: 10px;
+    }
+  
+    .doctor-photo {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .doctor-details-info h2 {
+      font-size: 20px;
+    }
+  
+    .consult-card {
+      padding: 15px;
+    }
+  
+    .btn-blue,
+    .btn-orange,
+    .read-more-btn {
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+  }
+  

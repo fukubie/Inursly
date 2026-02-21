@@ -1,0 +1,59 @@
+/* ====================Add CSS  here==================*/
+
+.appointments-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.appointments-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+/* List */
+.appointments-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Card */
+.appointments-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    background-color: #fff;
+    transition: 0.2s ease;
+}
+
+.appointments-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Text inside card */
+.appointments-card p {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: #ff4d4f;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #d9363e;
+}
