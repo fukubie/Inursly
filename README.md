@@ -4,6 +4,12 @@ A full-stack **doctor appointment booking platform** for the US: patients can fi
 
 ---
 
+## Live Demo
+
+https://inursly.onrender.com
+
+---
+
 ## What it does
 
 - **Patients**: Sign up, log in, search doctors by name or specialty, view doctor profiles (fees, clinics, reviews), book in-person or video appointments, view and cancel their appointments. Each doctor profile has a **QR code** that links to their booking page.
